@@ -48,7 +48,6 @@ size_t Graph::size() {
 }
 
 std::unordered_map<std::string, std::vector<std::string>> Graph::BFS (std::string vertex) {
-    
     //unordered_map<string, int> distance;
     unordered_map<string, string> laststep;
 
