@@ -1,4 +1,4 @@
-# Install script for directory: /workspaces/CS225/Final_Project/src
+# Install script for directory: /workspaces/CS225/CS225-Project/Final_Project/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
