@@ -49,6 +49,12 @@ size_t Graph::size() {
 
 std::unordered_map<std::string, std::vector<std::string>> Graph::BFS (std::string vertex) {
     //unordered_map<string, int> distance;
+    if (graph_.find(vertex) == graph_.end()) {
+        cout<<vertex<<" is Not in the Graph!"<<endl;
+        return std::unordered_map<std::string, std::vector<std::string>>();
+    }
+
+
     unordered_map<string, string> laststep;
 
     for (string i : GetVertices()) {
@@ -77,6 +83,8 @@ std::unordered_map<std::string, std::vector<std::string>> Graph::BFS (std::strin
 
     unordered_map<string, vector<string>> toreturn;
 
+
+
     for (string i : GetVertices()) {
         // if "", not in the same component
         if (laststep[i] == "") continue;
@@ -91,4 +99,17 @@ std::unordered_map<std::string, std::vector<std::string>> Graph::BFS (std::strin
     }
     
     return toreturn;
+}
+
+
+std::vector<std::string> Graph::Find_path(std::string src, std::string des) {
+    std::unordered_map<std::string, std::vector<std::string>> path = BFS(src);
+    if (path.size() == 0) return vector<string> ();
+
+    if (path.find(des) == path.end()) {
+        std::cout<<"Not connected!"<<endl;
+        return vector<string> ();
+    }
+    return path[des];
+
 }

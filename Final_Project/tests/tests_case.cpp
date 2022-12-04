@@ -23,8 +23,8 @@ TEST_CASE("requiretrue", "[weight=5]") {
 TEST_CASE("Test file_to_V2D_Smallcase", "[weight=5]") {
     V2D file = file_to_V2D("../tests/smallcase.txt");
 
-    // std::cout << file.size() <<std::endl;
-    // std::cout << file[0].size()<<std::endl;
+    std::cout << file.size() <<std::endl;
+    std::cout << file[0].size()<<std::endl;
 
     // for (size_t i = 0; i < file.size(); i++) {
     //     for (size_t j = 0; j < file[i].size(); j++) {
@@ -67,6 +67,7 @@ TEST_CASE("Test file_to_V2D_Largecase", "[weight=5]") {
         // }
         // std::cout << " " << std::endl;
     }
+    REQUIRE(file.size() == 20777);
     REQUIRE(file[0][0] == "0");
     REQUIRE(file[0][1] == "1");
     REQUIRE(file[1][0] == "0");
@@ -123,7 +124,7 @@ TEST_CASE("Test BFS_Smallcase", "[weight=5]") {
     Graph graph = V2D_to_Graph(file);
     std::unordered_map<std::string, std::vector<std::string>> bfs_0 = graph.BFS("0");
     // for (auto & map: bfs_0) {
-    //     std::cout << map.first << " ";
+    //     std::cout << map.first << ": ";
     //     for (size_t j = 0; j < map.second.size(); j++) {
     //         std::cout << map.second[j]<< " ";
     //     }
@@ -139,7 +140,7 @@ TEST_CASE("Test BFS_Smallcase2", "[weight=5]") {
     Graph graph = V2D_to_Graph(file);
     std::unordered_map<std::string, std::vector<std::string>> bfs_0 = graph.BFS("0");
     // for (auto & map: bfs_0) {
-    //     std::cout << map.first << " ";
+    //     std::cout << map.first << ": ";
     //     for (size_t j = 0; j < map.second.size(); j++) {
     //         std::cout << map.second[j]<< " ";
     //     }
@@ -159,6 +160,7 @@ TEST_CASE("Test BFS_Mediancase", "[weight=5]") {
     // for (size_t j = 0; j < bfs_103["218"].size(); j++) {
     //         std::cout << bfs_103["218"][j]<< " ";
     //     }
+    std::cout << endl;
     REQUIRE(bfs_103["218"].size() == 3);
 }
 
@@ -171,4 +173,43 @@ TEST_CASE("Test BFS_Largecase", "[weight=5]") {
     REQUIRE(bfs_0["9"].size() == 2);
     std::unordered_map<std::string, std::vector<std::string>> bfs_5531 = graph.BFS("5531");
     REQUIRE(bfs_5531["2850"].size() == 2);
+}
+
+
+TEST_CASE("Test Find_path_Smallcase", "[weight=5]") {
+    V2D file = file_to_V2D("../tests/smallcase.txt");
+    Graph graph = V2D_to_Graph(file);
+    std::vector<std::string> find_02 = graph.Find_path("0", "2");
+    std::vector<std::string> find_14 = graph.Find_path("1", "4");
+    // for (auto & i: find_02) {
+    //     std::cout << i << " ";
+    // }
+    // std::cout<<std::endl;
+    REQUIRE(find_02.size() == 3);
+    REQUIRE(find_14.size() == 3);
+}
+
+TEST_CASE("Test Find_path_Mediancase", "[weight=5]") {
+    V2D file = file_to_V2D("../tests/email-Eu-core.txt");
+    Graph graph = V2D_to_Graph(file);
+    std::vector<std::string> find_07 = graph.Find_path("0", "7");
+    std::vector<std::string> find_5_441 = graph.Find_path("5", "441");
+
+    std::vector<std::string> find_124_234 = graph.Find_path("124", "234");
+
+    //not exist 
+    std::vector<std::string> find_124_1500 = graph.Find_path("124", "1500");
+    std::vector<std::string> find_1500_124 = graph.Find_path("1500", "124");
+    std::vector<std::string> find_1500_1500 = graph.Find_path("1500", "1500");
+
+    // for (auto & i: find_124_234) {
+    //     std::cout << i << " ";
+    // }
+    // std::cout<<std::endl;
+
+    REQUIRE(find_07.size() == 3);
+    REQUIRE(find_5_441.size() == 3);
+    REQUIRE(find_124_1500.size() == 0);
+    REQUIRE(find_1500_124.size() == 0);
+    REQUIRE(find_1500_1500.size() == 0);
 }
