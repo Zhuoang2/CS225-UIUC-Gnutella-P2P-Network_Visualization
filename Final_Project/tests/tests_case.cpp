@@ -213,3 +213,36 @@ TEST_CASE("Test Find_path_Mediancase", "[weight=5]") {
     REQUIRE(find_1500_124.size() == 0);
     REQUIRE(find_1500_1500.size() == 0);
 }
+
+TEST_CASE("Test Centrality Smallcase", "[weight=5]") {
+    V2D file = file_to_V2D("../tests/smallcase.txt");
+    Graph graph = V2D_to_Graph(file);
+    for (string i : graph.GetVertices()) {
+        std::cout << i << ' ' << graph.getCentrality(i) << std::endl;
+    }
+}
+
+TEST_CASE("Test Centrality Smallcase_Disconnected Graph", "[weight=5]") {
+    V2D file = file_to_V2D("../tests/smallcase_disconnected.txt");
+    Graph graph = V2D_to_Graph(file);
+    for (string i : graph.GetVertices()) {
+        std::cout << i << ' ' << graph.getCentrality(i) << std::endl;
+    }
+}
+
+TEST_CASE("Test Centrality Mediancase", "[weight=5]") {
+    V2D file = file_to_V2D("../tests/email-Eu-core.txt");
+    Graph graph = V2D_to_Graph(file);
+    std::cout << "0 " << graph.getCentrality("0") << std::endl;
+    std::cout << "10 " << graph.getCentrality("10") << std::endl;
+    std::cout << "20 " << graph.getCentrality("20") << std::endl;
+}
+
+TEST_CASE("Test Centrality Largecase", "[weight=5]") {
+    V2D file = file_to_V2D("../tests/p2p-Gnutella08.txt");
+    Graph graph = V2D_to_Graph(file);
+    std::cout << "0 " << graph.getCentrality("0") << std::endl;
+    std::cout << "11 " << graph.getCentrality("11") << std::endl;
+    std::cout << "20 " << graph.getCentrality("20") << std::endl;
+    std::cout << "30 " << graph.getCentrality("30") << std::endl;
+}

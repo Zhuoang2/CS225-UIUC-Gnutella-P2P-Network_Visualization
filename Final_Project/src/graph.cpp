@@ -56,8 +56,9 @@ std::unordered_map<std::string, std::vector<std::string>> Graph::BFS (std::strin
 
 
     unordered_map<string, string> laststep;
+    vector<string> vertices = GetVertices();
 
-    for (string i : GetVertices()) {
+    for (string i : vertices) {
         //distance[i] = -1;
         laststep[i] = "";
     }
@@ -65,7 +66,7 @@ std::unordered_map<std::string, std::vector<std::string>> Graph::BFS (std::strin
 
     queue<string> q;
     q.push(vertex);
-
+ 
     while (!q.empty())
     {
         string front = q.front();
@@ -80,24 +81,27 @@ std::unordered_map<std::string, std::vector<std::string>> Graph::BFS (std::strin
         }
 
     }
-
+ 
     unordered_map<string, vector<string>> toreturn;
 
-
-
-    for (string i : GetVertices()) {
+    double centrality = 0.0;
+    for (string i : vertices) {
         // if "", not in the same component
         if (laststep[i] == "") continue;
         vector<string> topush;
         string temp = i;
+        int distance = 0;
         while(laststep[temp] != "-") {
             topush.insert(topush.begin(), temp);
             temp = laststep[temp];
+            distance ++;
         }
+        if (distance != 0) centrality += 1 / (distance*1.0);
         topush.insert(topush.begin(), vertex);
         toreturn[i] = topush;
     }
-    
+    centrality_[vertex] = centrality;
+
     return toreturn;
 }
 
@@ -107,9 +111,18 @@ std::vector<std::string> Graph::Find_path(std::string src, std::string des) {
     if (path.size() == 0) return vector<string> ();
 
     if (path.find(des) == path.end()) {
-        std::cout<<"Not connected!"<<endl;
+        //std::cout<<"Not connected!"<<endl;
         return vector<string> ();
     }
     return path[des];
 
+}
+
+void Graph::setCentrality() {
+    for (string i : GetVertices()) BFS(i);
+    
+}
+
+double Graph::getCentrality(std::string vertex) {
+    return centrality_[vertex];
 }

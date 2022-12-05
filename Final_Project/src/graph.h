@@ -22,11 +22,11 @@ using namespace std;
 
 class Graph {
 private:
-    std::unordered_map<std::string, std::unordered_set<std::string>> graph_;
+    std::unordered_map<std::string, std::unordered_set<std::string>> graph_; 
+
+    std::unordered_map<std::string, double> centrality_; //vertex to pair<connected component number, centrality value>
     
 public:
-
-    
     
     Graph() = default;
     ~Graph() = default;
@@ -44,10 +44,14 @@ public:
     void print();
 
     size_t size();
+
+    double getCentrality(std::string vertex);
     
-    // Find the shortest path from a source to all the other nodes within the same component.
+    // Find the shortest path from a source to all the other vertices within the same component.
     std::unordered_map<std::string, std::vector<std::string>> BFS (std::string vertex);
 
     //Find path.
     std::vector<std::string> Find_path(std::string src, std::string des);
+
+    void setCentrality(); // set centrality_
 };
