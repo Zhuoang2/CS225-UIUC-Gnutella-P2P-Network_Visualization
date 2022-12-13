@@ -1,4 +1,4 @@
-# written report
+# Written Report
 ****
 ## Algorithms
 ### BFS
