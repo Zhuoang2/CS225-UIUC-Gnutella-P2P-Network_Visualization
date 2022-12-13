@@ -10,7 +10,10 @@ Our BFS function is used to find the shortest paths to all other points with a g
 The goal of this algorithm is to find get the importance(centrality value) of each vertex in the graph. We calculate the centrality value by adding up the reciprocal of shortest distance from the vertex to all other vertices in the same component. We implement the algorithm in the BFS function using the parameter name "centrality". In test case, we calculate and print out the top ten vertices and their centrality after quick sort. 
 
 ### Quick Sort
-We use quick sort algorithm to sort all vertices from largest to smallest by centrality value. In test case, we calculate and print out the top ten vertices as well as their centrality in the graph.  
+We use quick sort algorithm to sort all vertices from largest to smallest by centrality value. In test case, we calculate and print out the top ten vertices as well as their centrality in the graph. In the screenshot below, the first column is vertex ID and the second column is centrality value. From up to low, the centrality value decreases. 
+
+<img width="556" alt="cb0dcbdf5ae8e82028b5ae54eafc5e4" src="https://user-images.githubusercontent.com/90986475/207246123-2348cc2d-8b10-4082-902f-46f7d6ee9666.png">
+
 
 ****
 ## Conclusion
