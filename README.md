@@ -4,7 +4,7 @@
 > Contributors: Zhuoang Tao, Qi Wu, Aoyang Li, Jiayi Zhang
 >
 > ![image](https://user-images.githubusercontent.com/90300558/207221148-24970280-807f-4039-aa5e-017763746312.png)
-> [The database used for creating this picture](https://snap.stanford.edu/data/p2p-Gnutella08.html)
+> The red point is the most important point for [this database used for creating this picture](https://snap.stanford.edu/data/p2p-Gnutella08.html)
 
 
 ****
