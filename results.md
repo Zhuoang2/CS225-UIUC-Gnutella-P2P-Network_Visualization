@@ -3,6 +3,7 @@
 ## Algorithms
 ### BFS
 Our BFS function is used to find the shortest paths to all other points with a given points. We created small, medium, large testcases to test the correctness and efficiency of this function. We calculate a lot of paths by hand and test whether the algorithm can find the correct shortest paths. There are several examples in the testcases. We check its correctness by finding the number of vertices in shortest path to several other vertices. 
+
 <img width="579" alt="381fa4e4cda6a2f2369bd2fdac34c2d" src="https://user-images.githubusercontent.com/90986475/207244276-5ba71e72-ef7c-4f20-b545-c4977605266b.png">
 
 ### Closeness Centrality
