@@ -126,3 +126,30 @@ void Graph::setCentrality() {
 double Graph::getCentrality(std::string vertex) {
     return centrality_[vertex];
 }
+
+vector<string> Graph::sortVertices() {
+    vector<string> vertices = GetVertices();
+    quickSort(vertices, 0, vertices.size()-1);
+    return vertices;
+}
+
+int Graph::partition(vector<string>& vec, int left, int right) {
+    string pivot = vec[right];
+    int i = left - 1;
+    for (int j = left; j < right; j++) {
+        if (centrality_[vec[j]] > centrality_[pivot]) {
+            i++;
+            swap(vec[i], vec[j]);
+        }
+    }
+    swap(vec[i+1], vec[right]);
+    return i + 1;
+}
+
+void Graph::quickSort(vector<string>& vec, int left, int right) {
+    if (left < right) {
+        int p = partition(vec, left, right);
+        quickSort(vec, left, p - 1);
+        quickSort(vec, p+1, right);
+    }
+}

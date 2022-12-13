@@ -246,3 +246,37 @@ TEST_CASE("Test Centrality Largecase", "[weight=5]") {
     std::cout << "20 " << graph.getCentrality("20") << std::endl;
     std::cout << "30 " << graph.getCentrality("30") << std::endl;
 }
+
+TEST_CASE("Test SortCentrality Smallcase", "[weight=5]") {
+    V2D file = file_to_V2D("../tests/smallcase.txt");
+    Graph graph = V2D_to_Graph(file);
+    for (string i : graph.GetVertices()) {
+        std::cout << i << ' ' << graph.getCentrality(i) << std::endl;
+    }
+    for (std::string i : graph.sortVertices()) {
+        std::cout << i << ' ' ;
+    }
+    std::cout << std::endl;
+}
+
+TEST_CASE("Test SortCentrality Mediancase", "[weight=5]") {
+    V2D file = file_to_V2D("../tests/email-Eu-core.txt");
+    Graph graph = V2D_to_Graph(file);
+    std::vector<std::string> sorted = graph.sortVertices();
+    for (size_t i = 0; i < 10; i ++) {
+        std::cout << sorted[i] << ' ' << graph.getCentrality(sorted[i]) << std::endl;
+    }
+}
+
+
+TEST_CASE("Test plot_graph Smallcase", "[weight=5]") {
+    plot_graph("../tests/smallcase.txt", "../tests/smallcase.png");
+}
+
+TEST_CASE("Test plot_graph Mediancase", "[weight=5]") {
+    plot_graph("../tests/email-Eu-core.txt", "../tests/email-Eu-core.png");
+}
+
+TEST_CASE("Test plot_graph Largecase", "[weight=5]") {
+    plot_graph("../tests/p2p-Gnutella08.txt", "../tests/p2p-Gnutella08.png");
+}

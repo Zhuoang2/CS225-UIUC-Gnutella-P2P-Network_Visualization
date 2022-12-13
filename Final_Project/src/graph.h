@@ -18,7 +18,7 @@
 
 using namespace std;
 
-
+ 
 
 class Graph {
 private:
@@ -54,4 +54,9 @@ public:
     std::vector<std::string> Find_path(std::string src, std::string des);
 
     void setCentrality(); // set centrality_
+
+    vector<string> sortVertices(); //sort all vertices by centrality value from large to small
+
+    int partition(vector<string>& vec, int left, int right);  //helper for sortVertices
+    void quickSort(vector<string>& vec, int left, int right); //helper for sortVertices
 };
