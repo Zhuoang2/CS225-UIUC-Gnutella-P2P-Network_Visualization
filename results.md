@@ -2,6 +2,7 @@
 ****
 ## Algorithms
 ### BFS
+Our BFS function is used to find the shortest paths to all other points with a given points. We created small, medium, large testcases to test the correctness and efficiency of this function. There are several examples in the testcases.
 
 ### Closeness Centrality
 
