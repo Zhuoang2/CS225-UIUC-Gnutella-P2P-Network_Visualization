@@ -3,9 +3,9 @@
 ## Algorithms
 ### BFS
 
-### 
+### Clossness Centrality
 
-###
+### 
 
 ****
 ## Conclusion
