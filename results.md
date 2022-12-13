@@ -3,7 +3,7 @@
 ## Algorithms
 ### BFS
 
-### Clossness Centrality
+### Closeness Centrality
 
 ### 
 
